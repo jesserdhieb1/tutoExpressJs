@@ -2,9 +2,9 @@
   "name": "project2",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "http-app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon http-app.js"
   },
   "keywords": [],
   "author": "",
