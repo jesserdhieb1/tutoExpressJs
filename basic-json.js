@@ -3,7 +3,7 @@ const app = express()
 const {products}=require('./data.js');
 
 app.get('/',(req,res)=>{
-    res.json(products);
+    res.status(300).json(products);
 })
 
 app.listen(5000,()=>{
