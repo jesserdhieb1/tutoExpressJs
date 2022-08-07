@@ -25,9 +25,26 @@ app.get('/api/products/:id_product',(req,res)=>{
 })
 app.get('/api/products/:id_product/reviews/:id_review',(req,res)=>{
     res.send(`<h1>product id is ${req.params.id_product} and review id is ${req.params.id_review}</h1>`)
-    console.log(req.params)
-
+    console.log(req.params);
 })
+
+app.get('/api/v1/query',(req,res)=>{
+    const{search,limit}=req.query;
+    let sortedProducts=[...products];
+    if(search){
+        sortedProducts= sortedProducts.filter((product)=>{
+            return product.name.startsWith(search);
+        })
+    }
+    if (limit){
+        sortedProducts= sortedProducts.slice(0,Number(limit));
+    }
+    if (sortedProducts.length<1){
+        return res.status(200).send('<h1>No such product :(</h1>')
+    }
+    res.status(200).json(sortedProducts);
+})
+
 app.listen(5000,()=>{
     console.log('Server connecting on port 5000')
 })
