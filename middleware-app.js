@@ -1,9 +1,10 @@
 const express =  require('express')
 const logger = require('./logger')
-
+const authorize = require('./authorize')
 const app=express()
 
-app.use(logger)
+app.use([logger,authorize])
+
 app.get('/',(req,res)=>{
     res.send('Home')
 })
